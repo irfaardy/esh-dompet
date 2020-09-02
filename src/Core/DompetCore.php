@@ -36,7 +36,11 @@ class DompetCore extends CredentialManager
           $this->message =  Lang::get('dompet.pin.invalid');
           return false;
     } 
-
+    /**
+     * Method ini untuk melakukan pengurangan saldo
+     *
+     * @return boolean
+  */
    protected function reduceBalance($ammount,$note = null,$transaction_id = null)
 
    {
@@ -49,8 +53,12 @@ class DompetCore extends CredentialManager
           $this->message =  Lang::get('dompet.pin.invalid');
           return false;
     }
-
-    protected function reduceSaldo($ammount,$note=null,$transaction_id=null)
+     /**
+     * Method ini untuk Pengurangan saldo
+     *
+     * @return boolean
+  */
+  protected function reduceSaldo($ammount,$note=null,$transaction_id=null)
 
    {
          if(Dompet::create(['user_id' => $this->user_id,'balance' => DB::raw("-".$ammount),'annotation'=>$note,
@@ -60,14 +68,36 @@ class DompetCore extends CredentialManager
 
          return false;
    }
+   protected function addSaldo($ammount,$note=null,$transaction_id=null)
 
+   {
+         if(Dompet::create(['user_id' => $this->user_id,'balance' => $ammount,'annotation'=>$note,
+          'transaction_id'=>$transaction_id])){
+            return true;
+         }
+
+         return false;
+   }
+   /**
+     * Method ini untuk melakukan perhitungan jumlah saldo dari user yang sudah ditentukan
+     *
+     * @return float
+  */
+  protected function totalBalance($formated = false){
+        $sum = Dompet::where('user_id',$this->user_id)->sum('balance');
+        if($formated)
+        {
+          $sum = number_format($sum);
+        }
+        return $sum;
+  }
     
   /**
      * Method ini untuk melakukan permintaan penarikan dana ke admin website
      *
      * @return boolean
   */
-   protected function account($user_id,$pin){
+   protected function account($user_id,$pin=null){
    		$this->user_id = $user_id;
    		$this->pin = $pin;
 
@@ -101,7 +131,11 @@ class DompetCore extends CredentialManager
           $this->message =  Lang::get('dompet.pin.invalid');
           return false;
    }
-
+  /**
+     * Method ini untuk melakukan Balidasi Akun
+     *
+     * @return boolean
+  */
    protected function validate()
 
    {

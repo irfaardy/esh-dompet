@@ -27,8 +27,8 @@ class Dompet extends DompetCore
       * @param integer $userId
       * @return float
   */
-   public function sumBalance($userId){
-    
+   public function sumBalance($formatted=false){
+      return $this->account($this->userId)->totalBalance($formatted);
    }
    /**
       * Method ini untuk membuat Pin Baru
@@ -58,7 +58,7 @@ class Dompet extends DompetCore
      * @param string $pin
      * @return $this;
   */
-   public function credential($userId,$pin)
+   public function credential($userId,$pin=null)
 
    {
       $this->userId = $userId;
