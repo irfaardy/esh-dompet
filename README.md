@@ -86,11 +86,11 @@ Dompet::credential(1,123456)->balance(2000)->reduce("Some Transaction",$transact
 if(Dompet::credential()->balance(2000)->add("Some Transaction",$transaction_id))
 
 {
-     echo Dompet::message($new_pin);
+     echo Dompet::message();
 } else 
 
 {
-     echo Dompet::message($new_pin);
+     echo Dompet::message();
 }
 
 ```
