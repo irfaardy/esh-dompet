@@ -1,5 +1,5 @@
 {
-    "name": "irfa/dompet-abdi",
+    "name": "irfa/dompet",
     "description": "\"Wallet plugin for Laravel 5,6,7\"",
     "type": "package",
     "license": "MIT",
