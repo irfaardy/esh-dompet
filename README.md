@@ -1,5 +1,9 @@
 
+
+
+
 # 🔒 **ESH Dompet**
+
 Package ini berfungsi untuk menyimpan saldo ke dompet digital
 
 [^Note]: Masih Tahap Pengembangan jadi belum stabil.
@@ -80,6 +84,17 @@ Dompet::credential(1,123456)->update($new_pin);
 ```php
 Dompet::credential(1,123456)->balance(2000)->reduce("Some Transaction",$transaction_id);
 ```
+<h2>Get total Balance</h2>
+
+```php
+Dompet::credential($user->id)->sumBalance();
+//result 5000
+//Formated number
+Dompet::credential($user->id)->sumBalance(true);
+// result 5,000
+```
+
+
 <h2>Get Message success or fail</h2>
 
 ```php
@@ -94,7 +109,6 @@ if(Dompet::credential()->balance(2000)->add("Some Transaction",$transaction_id))
 }
 
 ```
-
 
 ------
 
