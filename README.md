@@ -80,7 +80,20 @@ Dompet::credential(1,123456)->update($new_pin);
 ```php
 Dompet::credential(1,123456)->balance(2000)->reduce("Some Transaction",$transaction_id);
 ```
+<h2>Get Message success or fail</h2>
 
+```php
+if(Dompet::credential()->balance(2000)->add("Some Transaction",$transaction_id))
+
+{
+     echo Dompet::message($new_pin);
+} else 
+
+{
+     echo Dompet::message($new_pin);
+}
+
+```
 
 
 ------
