@@ -3,7 +3,7 @@
     "description": "\"Wallet plugin for Laravel 5,6,7\"",
     "type": "package",
     "license": "MIT",
-    "version": "v1.0.0",
+    "version": "v1.0.2",
     "keywords": ["laravel", "plugin", "wallet", "dompet digital", "security"],
     "authors": [
         {
