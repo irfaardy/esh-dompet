@@ -32,7 +32,7 @@ composer require irfa/dompet
 ```php
 'aliases' => [
          ....
-    	'Lockout' => Irfa\Dompet\Saku\Dompet::class,
+    	'Dompet' => Irfa\Dompet\Saku\Dompet::class,
 ],
 ```
 
