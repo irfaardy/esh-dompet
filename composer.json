@@ -1,10 +1,10 @@
 {
     "name": "irfa/dompet",
-    "description": "\"Wallet plugin for Laravel 5,6,7\"",
+    "description": "\"E-Wallet plugin for Laravel 5,6,7\"",
     "type": "package",
     "license": "MIT",
-    "version": "v1.0.2",
-    "keywords": ["laravel", "plugin", "wallet", "dompet digital", "security"],
+    "version": "v1.1.0",
+    "keywords": ["laravel", "plugin", "wallet", "dompet digital", "security","e-wallet","eshanstudio"],
     "authors": [
         {
             "name": "Irfa A",
