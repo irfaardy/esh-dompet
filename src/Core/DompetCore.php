@@ -58,7 +58,7 @@ class DompetCore extends CredentialManager
      *
      * @return boolean
   */
-  protected function reduceSaldo($ammount,$note=null,$transaction_id=null)
+  private function reduceSaldo($ammount,$note=null,$transaction_id=null)
 
    {
          if(Dompet::create(['user_id' => $this->user_id,'balance' => DB::raw("-".$ammount),'annotation'=>$note,
@@ -68,7 +68,7 @@ class DompetCore extends CredentialManager
 
          return false;
    }
-   protected function addSaldo($ammount,$note=null,$transaction_id=null)
+   private function addSaldo($ammount,$note=null,$transaction_id=null)
 
    {
          if(Dompet::create(['user_id' => $this->user_id,'balance' => $ammount,'annotation'=>$note,
@@ -90,6 +90,15 @@ class DompetCore extends CredentialManager
           $sum = number_format($sum);
         }
         return $sum;
+  }
+  protected function transactionHistory($limit){
+      $data = Dompet::where('user_id',$this->user_id)
+              ->orderBy('created_at','DESC')
+              ->limit($limit)
+              ->get();
+
+      return $data;
+
   }
     
   /**

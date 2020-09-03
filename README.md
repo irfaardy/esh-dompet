@@ -1,7 +1,5 @@
 
 
-
-
 # 🔒 **ESH Dompet**
 
 Package ini berfungsi untuk menyimpan saldo ke dompet digital
@@ -53,7 +51,7 @@ php artisan migrate
 
 
 
-<h2>Usage</h2>
+<h2>Basic Usage</h2>
 
 <hr>
 <h2>Create new PIN</h2>
@@ -62,13 +60,15 @@ php artisan migrate
 use Dompet;
 ...
 Dompet::make($user->id, 123456);
+//return boolean
 ```
 
 <h2>Update PIN</h2>
 
 ```php
-$new_pin = 654321;
-Dompet::credential(1,123456)->update($new_pin);
+...
+Dompet::credential($userID,$pin)->update($new_pin);
+//return boolean
 ```
 
 
@@ -76,17 +76,22 @@ Dompet::credential(1,123456)->update($new_pin);
 <h2>Add Balance to account</h2>
 
 ```php
- Dompet::credential(1,123456)->balance(2000)->add("Some Transaction",$transaction_id);
+... 
+Dompet::credential($userID,$pin)->balance(20000)->add("Some Transaction",$transaction_id);
+//return boolean
 ```
 
 <h2>Reduce Balance to account</h2>
 
 ```php
-Dompet::credential(1,123456)->balance(2000)->reduce("Some Transaction",$transaction_id);
+...
+Dompet::credential($userID,$pin)->balance(20000)->reduce("Some Transaction",$transaction_id);
+//return boolean
 ```
 <h2>Get total Balance</h2>
 
 ```php
+...
 Dompet::credential($user->id)->sumBalance();
 //result 5000
 //Formated number
@@ -94,19 +99,28 @@ Dompet::credential($user->id)->sumBalance(true);
 // result 5,000
 ```
 
+<h2>Get Transaction History</h2>
+
+```php
+... 
+foreach(Dompet::credential($userID)->history() as $d)
+ {
+     echo $d->annotation." | ".$d->balance."<br>";
+ }
+```
+
+
 
 <h2>Get Message success or fail</h2>
 
 ```php
 if(Dompet::credential()->balance(2000)->add("Some Transaction",$transaction_id))
-
 {
-     echo Dompet::message();
+     echo "Succeded, ".Dompet::message();
 } else 
-
-{
-     echo Dompet::message();
-}
+	{
+     	echo "Failed, ".Dompet::message();
+	}
 
 ```
 

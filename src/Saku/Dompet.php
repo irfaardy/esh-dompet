@@ -12,6 +12,17 @@ class Dompet extends DompetCore
   private $pin;
 
   /**
+     * Method ini berfungsi untuk melihat history transaksi di dompet
+     *
+     * @param integer $limit
+     * @return object
+  */
+   public function history($limit=12)
+
+   {
+      return $this->account($this->userId)->transactionHistory(12);
+   } 
+   /**
      * Method ini untuk melakukan permintaan penarikan dana ke admin website
      *
      * @return boolean

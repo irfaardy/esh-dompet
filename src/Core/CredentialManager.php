@@ -29,6 +29,9 @@ class CredentialManager
 
    {
    		$dompet = PinDompet::where('user_id',$this->user_id)->first();
+      if(empty($dompet)){
+        return false;
+      }
    		if(Hash::check($this->pin,$dompet->pin)){
    			return true;
    		}
