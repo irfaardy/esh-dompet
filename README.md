@@ -4,7 +4,6 @@
 
 Package ini berfungsi untuk menyimpan saldo ke dompet digital
 
-[^Note]: Masih Tahap Pengembangan jadi belum stabil.
 
 
 
